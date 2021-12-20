@@ -13,13 +13,11 @@ function criaCor(){
     return [r,g,b]
 }
 
-//Função que cria o código da cor principal, a ser adivinhada, e mostra
-function corPrincipal(){
-    [rp,gp,bp]=criaCor()
-    let cor='( '+rp+' , '+gp+' , '+bp+' )'
+//Função que mosta o código da cor principal, a ser adivinhada
+function corPrincipal([rp,gp,bp]){
+    let cor='rgb('+rp+', '+gp+', '+bp+')'
     let rgbColor=document.getElementById('rgb-color')
     rgbColor.innerText=cor
-    return [rp,gp,bp]
 }
 
 //Função que cria os círculos das opções
@@ -34,21 +32,39 @@ function criaBalls(quant){
 criaBalls(6)
 
 //Função cria a paleta de cores
-function paleta([r,g,b]){
+function paleta(){
     let quant=document.querySelectorAll('.ball')
-    console.log(quant)
     let especial=Math.floor(Math.random()*60)%quant.length
-    console.log(especial)
     for(let i=0;i<quant.length;i+=1){
+        // quant[i].addEventListener('click',adivinha())
         if(i==especial){
-            [r,g,b]=corPrincipal()
-            console.log([r,g,b])
+            [r,g,b]=criaCor()
+            corPrincipal([r,g,b])
             quant[i].style.backgroundColor= 'rgb('+r+','+g+','+b+')'
         } else{
             [r,g,b]=criaCor()
-            console.log([r,g,b])
             quant[i].style.backgroundColor= 'rgb('+r+','+g+','+b+')'
         }
     }
 }
-paleta([2,4,25])
+paleta()
+
+function adivinha(){
+    let quant=document.querySelectorAll('.ball')
+    let rgbColor=document.getElementById('rgb-color').innerText
+    for(let i=0;i<quant.length;i+=1){
+        quant[i].addEventListener('click',function(event){
+            let corClicada = event.target.style.backgroundColor
+            console.log(corClicada)
+            if(corClicada==rgbColor){
+                document.getElementById('answer').innerText='Acertou!'
+            } else {
+                document.getElementById('answer').innerText='Errou! Tente novamente!'
+            }
+        })
+
+    }
+
+
+}
+adivinha()
