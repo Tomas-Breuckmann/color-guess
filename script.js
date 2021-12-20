@@ -21,10 +21,9 @@ function corPrincipal(){
     rgbColor.innerText=cor
     return [rp,gp,bp]
 }
-[rp,gp,bp]=corPrincipal()
 
 //Função que cria os círculos das opções
-function criaOpcoes(quant){
+function criaBalls(quant){
     let rgbOptions=document.getElementById('rgb-options')
     for(let i=1;i<=quant;i+=1){
         let item = document.createElement('li')
@@ -32,4 +31,24 @@ function criaOpcoes(quant){
         rgbOptions.appendChild(item)
     }
 }
-criaOpcoes(6)
+criaBalls(6)
+
+//Função cria a paleta de cores
+function paleta([r,g,b]){
+    let quant=document.querySelectorAll('.ball')
+    console.log(quant)
+    let especial=Math.floor(Math.random()*60)%quant.length
+    console.log(especial)
+    for(let i=0;i<quant.length;i+=1){
+        if(i==especial){
+            [r,g,b]=corPrincipal()
+            console.log([r,g,b])
+            quant[i].style.backgroundColor= 'rgb('+r+','+g+','+b+')'
+        } else{
+            [r,g,b]=criaCor()
+            console.log([r,g,b])
+            quant[i].style.backgroundColor= 'rgb('+r+','+g+','+b+')'
+        }
+    }
+}
+paleta([2,4,25])
