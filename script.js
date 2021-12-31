@@ -1,10 +1,8 @@
 // window.onload=function(){
-//     let r= Math.floor(Math.random()*255)
-//     let g= Math.floor(Math.random()*255)
-//     let b= Math.floor(Math.random()*255)
-//     console.log('('+r+','+g+','+b+')')
+// let placar = 0
+// document.getElementById('score').innerText=placar
 // }
-
+let placar = 0
 //Função que escolhe randomicamente uma cor
 function criaCor(){
     let r= Math.floor(Math.random()*255)
@@ -58,6 +56,8 @@ function adivinha(){
             // console.log(corClicada)
             if(corClicada==rgbColor){
                 document.getElementById('answer').innerText='Acertou!'
+                placar += 3
+                document.getElementById('score').innerText=placar
             } else {
                 document.getElementById('answer').innerText='Errou! Tente novamente!'
             }
