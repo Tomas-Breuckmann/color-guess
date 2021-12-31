@@ -1,21 +1,18 @@
-// window.onload=function(){
-// let placar = 0
-// document.getElementById('score').innerText=placar
-// }
-let placar = 0
-//Função que escolhe randomicamente uma cor
-function criaCor(){
-    let r= Math.floor(Math.random()*255)
-    let g= Math.floor(Math.random()*255)
-    let b= Math.floor(Math.random()*255)
-    return [r,g,b]
+let placar = 0;
+
+// Função que escolhe randomicamente uma cor
+function criaCor() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  return [r, g, b];
 }
 
-//Função que mosta o código da cor principal, a ser adivinhada
-function corPrincipal([rp,gp,bp]){
-    let cor='rgb('+rp+', '+gp+', '+bp+')'
-    let rgbColor=document.getElementById('rgb-color')
-    rgbColor.innerText=cor
+// Função que mosta o código da cor principal, a ser adivinhada
+function corPrincipal([rp, gp, bp]) {
+  const cor = 'rgb(' + rp + ', ' + gp + ', ' + bp + ')';
+  let rgbColor=document.getElementById('rgb-color');
+  rgbColor.innerText=cor;
 }
 
 //Função que cria os círculos das opções
