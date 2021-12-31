@@ -55,7 +55,7 @@ function adivinha(){
     for(let i=0;i<quant.length;i+=1){
         quant[i].addEventListener('click',function(event){
             let corClicada = event.target.style.backgroundColor
-            console.log(corClicada)
+            // console.log(corClicada)
             if(corClicada==rgbColor){
                 document.getElementById('answer').innerText='Acertou!'
             } else {
@@ -64,7 +64,13 @@ function adivinha(){
         })
 
     }
-
-
 }
 adivinha()
+
+function newGame(){
+    document.getElementById('answer').innerText='Escolha uma cor'
+    paleta()
+    adivinha()
+}
+let newGameButton=document.getElementById('reset-game')
+newGameButton.addEventListener('click',newGame)
